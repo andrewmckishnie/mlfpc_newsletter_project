@@ -6,8 +6,11 @@ def capwords(words):
     words_s.remove(words_s[0])
     words_cap = [word.lower() if word.lower() in always_lower_words else word.upper() if word.upper() in always_upper_words else word.capitalize() for word in words_s]
     non_init_words = ' '.join(words_cap)
-    processed_words = init_word + ' ' + non_init_words
-    return processed_words
+    if len non_init_words != 0:
+        processed_words = init_word + ' ' + non_init_words
+        return processed_words
+    else:
+        return init_word
     
 
 def process_subject(subject):

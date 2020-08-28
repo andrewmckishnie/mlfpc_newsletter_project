@@ -92,16 +92,16 @@ def harvest_newsletters():
                     cursor.execute('''SELECT * FROM newsletter_sources WHERE source_name = %s''' , (src,))
                     src_id_fetch = cursor.fetchone()
                 src_id = src_id_fetch[0]
-                cursor.execute('''SELECT * FROM topics WHERE topic_name = %s''', (top_1, ))
-                top_1_id = cursor.fetchone()[0]
-                cursor.execute('''SELECT * FROM topics WHERE topic_name = %s''', (top_2, ))
-                top_2_id = cursor.fetchone()[0]
-                cursor.execute('''SELECT * FROM topics WHERE topic_name = %s''', (top_3, ))
-                top_3_id = cursor.fetchone()[0]
-                cursor.execute('''SELECT * FROM topics WHERE topic_name = %s''', (top_4, ))
-                top_4_id = cursor.fetchone()[0]
-                cursor.execute('''SELECT * FROM topics WHERE topic_name = %s''', (top_5, ))
-                top_5_id = cursor.fetchone()[0]
+                cursor.execute('''SELECT * FROM topics''')
+                topics_fetched = cursor.fetchall()
+                topics_dict = {}
+                for entry in topics_fetched:
+                    topics_dict[entry[1]] = entry[0]
+                top_1_id = topics_dict[top_1]
+                top_2_id = topics_dict[top_2]
+                top_3_id = topics_dict[top_3]
+                top_4_id = topics_dict[top_4]
+                top_5_id = topics_dict[top_5]
                 cursor.execute('''SELECT * FROM newsletters WHERE newsletter_url = %s''', (url,))
                 url_fetch = cursor.fetchone()
                 if url_fetch == None:

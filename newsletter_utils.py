@@ -146,7 +146,7 @@ def send_newsletters(newsletters_list):
     x = 0
     for nl_dict in newsletters_list:
         get_params = ""
-        nl_key = "mlfpc_key=nl20mlfpc20"
+        nl_key = ""
         dict_items = nl_dict.items()
         for key,value in dict_items:
             get_params += key + "=" +value + "&"

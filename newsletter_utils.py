@@ -152,7 +152,7 @@ def send_newsletters(newsletters_list):
             get_params += key + "=" +value + "&"
         get_params += nl_key
         url = "https://mlfpc.ca/newsletter_db_add"
-        r = req.get(url, get_params)
+        r = req.post(url, get_params)
         print("-----")
         print(r)
         print(get_params)
